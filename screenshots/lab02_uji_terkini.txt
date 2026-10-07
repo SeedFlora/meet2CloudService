@@ -1,0 +1,33 @@
+STARTER (diharapkan gagal)
+FAIL backup/readme-copy.txt harus sama dengan docs/readme.txt
+FAIL pindahkan docs/draft.txt ke docs/notes.txt
+FAIL results/visited.txt belum ada
+FAIL results/errors.txt harus berisi semua baris ERROR
+FAIL results/warn-count.txt harus berisi 2
+OK   izin eksekusi check-status.sh aktif
+FAIL HTTP 103 harus menghasilkan INFO: HTTP 103 (exit 0)
+FAIL HTTP 200 harus menghasilkan OK: HTTP 200 (exit 0)
+FAIL HTTP 302 harus menghasilkan REDIRECT: HTTP 302 (exit 0)
+FAIL HTTP 503 harus menghasilkan ALERT: HTTP 503 (exit 0)
+FAIL input kosong harus Usage... (exit 2)
+
+Hasil: 10 gagal
+
+SETELAH KUNCI
+OK   cp membuat salinan identik
+OK   mv mengubah draft.txt menjadi notes.txt
+OK   touch membuat visited.txt
+OK   grep dan redirection menghasilkan errors.txt
+OK   pipeline menghitung WARN
+OK   izin eksekusi check-status.sh aktif
+OK   HTTP 103 -> INFO
+OK   HTTP 200 -> OK
+OK   HTTP 302 -> REDIRECT
+OK   HTTP 503 -> ALERT
+OK   input kosong ditolak
+
+Hasil: 0 gagal
+
+INPUT TIDAK VALID
+Usage: check-status.sh <HTTP-code>
+exit=2

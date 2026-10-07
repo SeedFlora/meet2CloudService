@@ -160,4 +160,3 @@ Gunakan [repo template Lab 02](https://github.com/SeedFlora/meet2CloudService), 
 
 - Acuan topik: `COMP6991031- Cloud Services - R0.0-BDS1.pdf`, tabel Lecture/Laboratory sesi 2.
 - [Bash manual](https://www.gnu.org/software/bash/manual/bash.html) dan [GNU Coreutils manual](https://www.gnu.org/software/coreutils/manual/) untuk sintaks perintah.
-
