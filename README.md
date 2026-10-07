@@ -1,6 +1,18 @@
 # Lab 02 — Linux Fundamentals
 
-Repo template mandiri: [SeedFlora/meet2CloudService](https://github.com/SeedFlora/meet2CloudService). Mulai dari [modul mahasiswa dengan kunci](MODUL_MAHASISWA.md), [panduan dosen](PANDUAN_DOSEN.md), dan [panduan Git](PANDUAN_GIT.md). Versi cetak: [PDF mahasiswa](MODUL_MAHASISWA.pdf) dan [PDF dosen](PANDUAN_DOSEN.pdf). Slide kelas ada di `slides/`.
+<!-- lecture-materials:start -->
+
+## Materi teori sebelum praktikum
+
+- [Pertemuan 02: Linux Fundamentals](slides/Teori_Pertemuan_02.pptx)
+
+Slide menghubungkan konsep, kasus kerja, bacaan/video resmi, dan langkah lab.
+
+<!-- lecture-materials:end -->
+
+**Kebijakan kelas:** Lab ini latihan formatif, tanpa tugas, nilai, atau penyerahan terpisah. Satu proyek besar dikerjakan oleh kelompok **3 orang**, dengan presentasi checkpoint minggu 7 (UTS) dan hasil akhir minggu 14 (UAS). Simpan hasil lab hanya bila berguna sebagai referensi atau bukti proses proyek. Baca [brief proyek kelompok](PROYEK_KELOMPOK.md). Bobot resmi tetap mengikuti RPS/LMS.
+
+Repo template mandiri: [SeedFlora/meet2CloudService](https://github.com/SeedFlora/meet2CloudService). Mulai dari [modul mahasiswa dengan kunci](MODUL_MAHASISWA.md) dan [panduan Git](PANDUAN_GIT.md). Versi cetak: [PDF mahasiswa](MODUL_MAHASISWA.pdf). Slide kelas ada di `slides/`.
 
 **RPS COMP6991031, sesi 2 (LO 2, F2F).** Praktik ini melatih navigasi filesystem, operasi berkas, pencarian log, pipe dan redirection, izin `rwx`, serta Bash dengan variabel dan kondisi. Semua perintah bekerja pada data latihan di folder `workspace/`.
 
@@ -64,7 +76,7 @@ grep 'ERROR' logs/app.log
 
 Amati perbedaan `.` (direktori sekarang), `..` (induk), dan `/` (akar). Jelaskan mengapa `cat docs/readme.txt` berhasil dari `workspace/` tetapi gagal jika terminal sedang di `workspace/docs/`.
 
-## Tugas praktik
+## Latihan praktik
 
 Kerjakan sendiri di `workspace/`. Perintah di tabel adalah petunjuk, bukan urutan yang harus disalin mentah-mentah.
 
@@ -134,7 +146,7 @@ cd ..
 bash scripts/verify.sh
 ~~~
 
-Jika benar, semua baris bertanda `OK` dan akhir keluaran `Hasil: 0 gagal`. Kumpulkan:
+Jika benar, semua baris bertanda `OK` dan akhir keluaran `Hasil: 0 gagal`. Untuk dokumentasi proyek, Anda boleh menyimpan:
 
 1. Tangkapan layar terminal untuk `pwd`, `ls -la`, dan `bash scripts/verify.sh`.
 2. `workspace/results/errors.txt`, `warn-count.txt`, dan skrip `check-status.sh`.
