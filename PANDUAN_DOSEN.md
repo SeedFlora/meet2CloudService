@@ -93,6 +93,16 @@ Hasil berurutan `INFO`, `OK`, `REDIRECT`, `ALERT`, pesan `Usage` + exit 2, dan v
 
 ## Screenshot yang dijelaskan saat demo
 
+![Kode status lengkap dan verifikasi tiap keluaran](screenshots/lab02_kode_status_langkah4.png)
+
+**Perintah:** `nl -ba scripts/check-status.sh`, input 103/200/302/503/99, lalu `bash scripts/verify.sh`. **Fungsi:** menautkan isi skrip dengan hasil setiap cabang dan exit code. **Cara kerja:** regex memvalidasi rentang, `if/elif` memilih kategori, verifier mengecek berkas serta keluaran. **Baca:** empat kategori exit 0, 99 exit 2, `Hasil: 0 gagal`. Output aktual dirender dari salinan solusi; template tetap TODO.
+
+![Repo template Lab 02 sudah terbit](screenshots/lab02_git_terbit.png)
+
+*SHA pada gambar adalah snapshot saat uji. Setelah modul diperbarui, jalankan ulang perintah untuk memeriksa commit terbaru.*
+
+**Perintah:** `git remote -v`, `git status --short`, `git log -1`, `git rev-parse HEAD`, `git ls-remote origin refs/heads/main`. **Fungsi:** mengecek tujuan dan hasil push. **Cara kerja:** bandingkan SHA lokal dan branch remote. **Baca:** `Sama: True` pada template pengajar; mahasiswa memeriksa repo pribadi. Output command aktual dirender.
+
 ![Setup dan inspect dari paket awal](screenshots/lab02_setup_inspect.png)
 
 **Perintah:** `bash scripts/setup.sh && bash scripts/inspect.sh`. **Fungsi:** membuat dan memeriksa data awal. **Cara kerja:** setup menulis CSV/log/kerangka skrip, inspect membacanya. **Baca:** enam subfolder dan `WARN` = 2.

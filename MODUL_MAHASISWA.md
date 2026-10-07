@@ -113,6 +113,10 @@ bash scripts/verify.sh
 
 **Checkpoint 4:** empat kode valid menghasilkan kategori yang sesuai; panggilan kosong memberi exit code `2`. Verifier berakhir `Hasil: 0 gagal`. Gambar berikut adalah hasil **setelah solusi dikerjakan pada salinan uji**; starter mahasiswa memang belum demikian.
 
+![Isi kunci check-status.sh, kategori HTTP, exit code, dan verifier](screenshots/lab02_kode_status_langkah4.png)
+
+*Perintah: `nl -ba scripts/check-status.sh`, jalankan kode 103/200/302/503/99, lalu `bash scripts/verify.sh`. Fungsi: menguji seluruh cabang `if/elif/else`, input tak valid, dan artefak. Cara kerja: regex menerima 100–599; verifier memeriksa file dan keluaran skrip. Baca hasil: kategori sesuai, input 99 `exit=2`, dan `Hasil: 0 gagal`. Ini render output command aktual dari salinan terisolasi; starter repo tetap berisi TODO.*
+
 ![Hasil nyata verify Lab 02 setelah tugas selesai](screenshots/lab02_verify.png)
 
 * **Langkah:** Setelah tugas berkas dan `check-status.sh` selesai, jalankan `bash scripts/verify.sh` dari root repo. **Fungsi:** Memeriksa artefak dan klasifikasi status HTTP secara berulang. **Cara kerja:** Verifier membaca file hasil, menjalankan skrip status, dan menghitung pemeriksaan gagal. **Baca hasil:** Baris akhir harus `Hasil: 0 gagal`; kegagalan starter sebelum tugas selesai adalah petunjuk kerja.
@@ -140,6 +144,12 @@ git diff --cached
 git commit -m "lab02: operasi Linux dan skrip status HTTP"
 git push
 ```
+
+![Repo template Lab 02 terbit dengan commit lokal dan remote sama](screenshots/lab02_git_terbit.png)
+
+*SHA pada gambar adalah snapshot saat uji. Setelah modul diperbarui, jalankan ulang perintah untuk memeriksa commit terbaru.*
+
+*Perintah: `git remote -v`, `git status --short`, `git log -1 --oneline`, `git rev-parse HEAD`, dan `git ls-remote origin refs/heads/main`. Fungsi: memastikan origin benar dan commit terbaru ada di GitHub. Cara kerja: bandingkan SHA lokal dengan SHA remote. Baca hasil: `Sama: True` pada repo template pengajar; ulangi pada repo pribadi sesudah push. Ini render output command aktual.*
 
 Pastikan berkas staged hanya berisi data latihan. Jangan push file pribadi, token, `.env`, atau screenshot yang memperlihatkan kredensial. Bila push pertama memerlukan upstream, jalankan `git push -u origin main` bila branch Anda `main`.
 
