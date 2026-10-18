@@ -33,15 +33,29 @@ Setelah lab, mahasiswa dapat:
 | `/var` | Data yang berubah, misalnya log |
 | `/tmp` | Berkas sementara |
 
-Ubuntu dan Debian memakai banyak utilitas GNU yang sama. Alpine lebih kecil dan beberapa utilitasnya berasal dari BusyBox; opsi perintah dapat berbeda. Lab ini memakai Bash di Ubuntu/WSL, macOS, atau Codespaces.
+Ubuntu dan Debian memakai banyak utilitas GNU yang sama. Alpine lebih kecil dan beberapa utilitasnya berasal dari BusyBox; opsi perintah dapat berbeda. Jalur lokal Windows memakai Git Bash. Ubuntu/WSL dan macOS dengan Bash juga dapat menjalankan perintah yang sama.
 
 ## Prasyarat
 
-- Terminal **WSL Ubuntu**, **macOS Terminal** dengan Bash, atau **GitHub Codespaces**. Di Windows, buka WSL, bukan PowerShell, untuk menjalankan skrip `.sh`. Git Bash dapat dipakai jika utilitas Bash standar tersedia.
+- Terminal **Git Bash** di Windows yang sudah memiliki Git, atau Bash pada WSL/Linux/macOS. Pilih Git Bash melalui menu terminal VS Code. Jalankan seluruh langkah pada satu terminal Bash, bukan PowerShell.
 - Editor teks seperti VS Code, `nano`, atau `vim`.
 - Tidak perlu Docker, akun cloud, `sudo`, atau akses internet setelah paket lab tersedia.
 
-Kerjakan di repo pribadi Lab 02. Buka terminal dari **root repo**, lalu jalankan:
+## 0. Clone ke laptop
+
+Buka **Git Bash**. Jalankan blok berikut sekali untuk membuat salinan baru di folder pengguna. Gunakan terminal Bash yang sama sampai verifikasi selesai.
+
+```bash
+cd ~
+git clone https://github.com/SeedFlora/meet2CloudService.git meet2CloudService-local
+cd meet2CloudService-local
+pwd
+ls scripts/setup.sh starter/check-status.sh
+```
+
+Hasil: terminal berada di `meet2CloudService-local` dan dua file ditemukan. Buka folder ini di VS Code. Folder inilah root repo untuk perintah berikut. Salinan yang sudah ada boleh dibuka langsung, lalu periksa `pwd` dan `ls` yang sama. Praktik tidak memerlukan repo pribadi atau akun cloud.
+
+Kerjakan di folder Lab 02 yang tersedia di laptop. Repo pribadi hanya diperlukan untuk latihan push opsional. Buka terminal dari **root repo**, lalu jalankan:
 
 ~~~bash
 bash scripts/setup.sh
@@ -65,7 +79,6 @@ cd docs                     # path relatif
 pwd
 cd ..
 ls -la docs
-tree .                      # jika tree tersedia
 find . -type f | sort       # pengganti tree yang juga jalan di macOS
 cat docs/readme.txt
 less logs/app.log            # tekan q untuk keluar

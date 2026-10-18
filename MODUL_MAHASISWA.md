@@ -11,8 +11,22 @@ Anda akan memakai path absolut/relatif, membaca struktur filesystem Linux (`/`, 
 ## Prasyarat
 
 - Terminal **Bash**: WSL Ubuntu, Linux, macOS dengan Bash, GitHub Codespaces, atau Git Bash di Windows. Perintah `.sh` di modul ini dijalankan dari Bash, **bukan PowerShell biasa**. Git Bash berhasil pada uji paket.
-- Repo pribadi Lab 02, editor teks, dan Git untuk push. Lab ini tidak membutuhkan Docker, akun cloud, `sudo`, atau internet setelah repo tersedia.
+- Folder Lab 02 dan editor teks. Clone publik cukup untuk praktik lokal. Git untuk commit/push ke repo pribadi bersifat opsional. Lab ini tidak membutuhkan Docker, akun cloud, `sudo`, atau internet setelah repo tersedia.
 - Pastikan terminal dimulai dari **root repo**. Path pada contoh keluaran dapat berbeda antar mesin.
+
+## 0. Clone ke laptop
+
+Buka **Git Bash**. Jalankan blok berikut sekali untuk membuat salinan baru di folder pengguna. Gunakan terminal Bash yang sama sampai verifikasi selesai.
+
+```bash
+cd ~
+git clone https://github.com/SeedFlora/meet2CloudService.git meet2CloudService-local
+cd meet2CloudService-local
+pwd
+ls scripts/setup.sh starter/check-status.sh
+```
+
+Hasil: terminal berada di `meet2CloudService-local` dan dua file ditemukan. Buka folder ini di VS Code. Folder inilah root repo untuk perintah berikut. Salinan yang sudah ada boleh dibuka langsung, lalu periksa `pwd` dan `ls` yang sama. Praktik tidak memerlukan repo pribadi atau akun cloud.
 
 ## 1. Buat workspace dan baca hasil awal
 
@@ -61,7 +75,7 @@ Tekan `q` untuk keluar dari `less`. Jika `tree` tersedia, bandingkan `tree .` de
 
 ## 3. Kerjakan artefak berkas dan log
 
-Kerjakan tugas berikut **sendiri** dari `workspace/`; gunakan petunjuk perintah pada kolom tengah. Jangan mengedit `logs/app.log` asal.
+Dari `workspace/`, jalankan operasi berikut pada data latihan. Jangan mengedit `logs/app.log` asal.
 
 | Tugas | Perintah yang perlu dipakai | Bukti akhir |
 |---|---|---|
@@ -70,6 +84,20 @@ Kerjakan tugas berikut **sendiri** dari `workspace/`; gunakan petunjuk perintah 
 | Buat penanda | `touch` | `results/visited.txt` ada |
 | Saring error | `grep` lalu `>` | `results/errors.txt` berisi dua baris `ERROR` |
 | Hitung warning | `grep`, `|`, `wc -l`, `>` | `results/warn-count.txt` berisi `2` |
+
+Salin perintah berikut secara berurutan dari `workspace/`:
+
+```bash
+cp docs/readme.txt backup/readme-copy.txt
+mv docs/draft.txt docs/notes.txt
+touch results/visited.txt
+grep 'ERROR' logs/app.log > results/errors.txt
+grep 'WARN' logs/app.log | wc -l > results/warn-count.txt
+cat results/errors.txt
+cat results/warn-count.txt
+```
+
+Hasil: dua baris error dan angka `2`. `mv` mengubah nama draf sekali; setelah berhasil, lanjut ke perintah berikutnya.
 
 Untuk melihat beda `>` dan `>>` tanpa merusak log:
 
@@ -89,7 +117,7 @@ cat results/incident.txt
 
 ## 4. Lengkapi skrip HTTP dan verifikasi
 
-Edit `workspace/scripts/check-status.sh` yang masih berisi TODO. Spesifikasinya:
+Buka `workspace/scripts/check-status.sh` di VS Code. Salin implementasi lengkap pada [bagian B](#b-seluruh-isi-check-statussh) ke file tersebut, lalu kembali ke perintah uji di bagian ini. Perhatikan penggunaan parameter, variabel, dan `if`/`elif`/`else`: percabangan memang subtopik Bash sesi ini. Spesifikasinya:
 
 | Input | Teks keluaran persis | Exit code |
 |---|---|---:|
@@ -123,7 +151,7 @@ bash scripts/verify.sh
 
 * **Langkah:** Setelah tugas berkas dan `check-status.sh` selesai, jalankan `bash scripts/verify.sh` dari root repo. **Fungsi:** Memeriksa artefak dan klasifikasi status HTTP secara berulang. **Cara kerja:** Verifier membaca file hasil, menjalankan skrip status, dan menghitung pemeriksaan gagal. **Baca hasil:** Baris akhir harus `Hasil: 0 gagal`; kegagalan starter sebelum tugas selesai adalah petunjuk kerja.
 
-## Pertanyaan yang dijawab di laporan
+## Pertanyaan diskusi
 
 1. Tulis satu contoh path absolut dan relatif menuju file yang sama. Dari direktori mana masing-masing berlaku?
 2. Apa perbedaan `|`, `>`, dan `>>` pada hasil log ini?
@@ -131,9 +159,9 @@ bash scripts/verify.sh
 4. Apa arti `rwx` untuk pemilik, grup, dan pengguna lain? Kapan `sudo` atau `chown` memang diperlukan? Jangan menjalankannya untuk lab ini.
 5. Mengapa kode HTTP `103` masuk kategori `INFO` dan `503` masuk `ALERT`, tetapi exit code skrip tetap `0` untuk keduanya?
 
-## Bukti, commit, dan push
+## Catatan dan Git opsional
 
-Salin [`hasil/TEMPLATE_LAPORAN.md`](hasil/TEMPLATE_LAPORAN.md) menjadi `hasil/lab02.md` dari root repo. Isi jawaban, simpan screenshot terminal **Anda sendiri** (`pwd`, `ls -la`, `bash scripts/verify.sh`) di `hasil/bukti/`, dan catat lingkungan Bash yang digunakan. File `workspace/results/` serta `workspace/scripts/check-status.sh` adalah artefak yang diperiksa.
+Praktik lokal selesai setelah verifier menunjukkan `Hasil: 0 gagal`. Laporan, screenshot, commit, dan push berikut hanya untuk referensi proyek pada repo pribadi. Salin [`hasil/TEMPLATE_LAPORAN.md`](hasil/TEMPLATE_LAPORAN.md) menjadi `hasil/lab02.md` dari root repo. Isi jawaban, simpan screenshot terminal **Anda sendiri** (`pwd`, `ls -la`, `bash scripts/verify.sh`) di `hasil/bukti/`, dan catat lingkungan Bash yang digunakan. File `workspace/results/` serta `workspace/scripts/check-status.sh` adalah artefak yang diperiksa.
 
 Kembali ke root repo, lalu:
 
@@ -220,7 +248,7 @@ cd ..
 bash scripts/verify.sh
 ```
 
-Empat input pertama masing-masing memberi `INFO`, `OK`, `REDIRECT`, `ALERT`. Input `99` memberi pesan `Usage` dan `echo "$?"` menunjukkan **2**. Verifier akhir harus menunjukkan **`Hasil: 0 gagal`**. Setelah itu salin `hasil/TEMPLATE_LAPORAN.md` menjadi `hasil/lab02.md`, simpan bukti sendiri di `hasil/bukti/`, lalu ikuti [panduan Git](PANDUAN_GIT.md).
+Empat input pertama masing-masing memberi `INFO`, `OK`, `REDIRECT`, `ALERT`. Input `99` memberi pesan `Usage` dan `echo "$?"` menunjukkan **2**. Verifier akhir harus menunjukkan **`Hasil: 0 gagal`**. Catatan opsional dapat memakai `hasil/TEMPLATE_LAPORAN.md`. Simpan bukti sendiri di `hasil/bukti/` dan ikuti [panduan Git](PANDUAN_GIT.md) hanya bila ingin menyimpan pekerjaan ke repo pribadi.
 
 ![Hasil uji terbaru solusi Lab 02 pada Git Bash](screenshots/lab02_uji_terkini.png)
 
